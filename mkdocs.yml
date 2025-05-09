@@ -1,0 +1,86 @@
+site_name: "SRE运维在线手册"
+sit_url: "https://dengyouf.github.io/sredocs"
+theme:
+  name: material
+  # https://squidfunk.github.io/mkdocs-material/customization/#extending-the-theme
+  custom_dir: overrides
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+  palette:
+    # default or slate
+    scheme: default
+    primary: black
+    accent: blue
+  logo: pic/icon/logo.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.top
+    - navigation.path
+    - navigation.indexes
+    # - header.autohide
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - toc.integrate
+
+
+# https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+# https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: 
+  # The Caret, Mark and Tilde extensions add the ability to highlight text and define sub- and superscript using a simple syntax. Enable them together via mkdocs.yml:
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+
+plugins:
+  # with-pdf需要渲染pdf时再开启
+  # - with-pdf
+  - search
+  - table-reader
+
+
+extra:
+  homepage: https://www.baidu.com
+  # version:
+  #   provider: mike
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  # - 主页: "index.md"
+  - 基础服务手册:
+      - 负载均衡:
+        - Nginx: ""
+  - PostgreSQL:
+      - 快速入门:
+          - 安装手册: "postgres/安装手册.md"
+          - 常见PSQL语句: "postgres/常见PSQL语句.md"
+
+  - 监控系统:
+      - Prometheus:
+          - 快速入门: "prometheus/quick_start.md"
+  - 云原生手册:
+    - Kubernetes安装:
+        - 部署Kubernetes集群(v1.26): "k8s/installation/kubeadm-v1.26.md"
+        - 部署Kubernetes集群(v1.28): "k8s/installation/kubeadm-v1.28.md"
+    - Pods:
+        - 健康检查: "k8s/pod/podinfo.md"
