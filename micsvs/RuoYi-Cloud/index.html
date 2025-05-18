@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -510,9 +515,85 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RuoYi-Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         RuoYi-Cloud
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    若依系统
+  </a>
+  
+    <nav class="md-nav" aria-label="若依系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    服务治理层
+  </a>
+  
+    <nav class="md-nav" aria-label="服务治理层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nacos" class="md-nav__link">
+    1. Nacos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sentinel" class="md-nav__link">
+    2. Sentinel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-skywalking" class="md-nav__link">
+    3. Skywalking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    微服务层
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -794,7 +875,95 @@
 
   <h1>RuoYi-Cloud</h1>
 
-
+<h2 id="_1">若依系统<a class="headerlink" href="#_1" title="Permanent link"></a></h2>
+<blockquote>
+<p>官网: <code>https://doc.ruoyi.vip/ruoyi-cloud/</code></p>
+</blockquote>
+<h3 id="_2">服务治理层<a class="headerlink" href="#_2" title="Permanent link"></a></h3>
+<h4 id="1-nacos">1. Nacos<a class="headerlink" href="#1-nacos" title="Permanent link"></a></h4>
+<ul>
+<li>安装 MySQL 5.7</li>
+</ul>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>https://repo.mysql.com//mysql57-community-release-el7-11.noarch.rpm
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>yum<span class="w"> </span>localinstall<span class="w"> </span>-y<span class="w"> </span>mysql57-community-release-el7-11.noarch.rpm
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>yum<span class="w"> </span>install<span class="w"> </span>mysql-community-server<span class="w"> </span>--nogpgcheck
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>systemctl<span class="w">  </span><span class="nb">enable</span><span class="w"> </span>mysqld<span class="w"> </span>--now
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>grep<span class="w"> </span>-i<span class="w"> </span>password<span class="w"> </span>/var/log/mysqld.log<span class="w"> </span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="m">2025</span>-05-18T16:03:34.257629Z<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">[</span>Note<span class="o">]</span><span class="w"> </span>A<span class="w"> </span>temporary<span class="w"> </span>password<span class="w"> </span>is<span class="w"> </span>generated<span class="w"> </span><span class="k">for</span><span class="w"> </span>root@localhost:<span class="w"> </span><span class="nv">6t9By</span><span class="o">=</span>/7lqsF
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>mysql<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s1">&#39;6t9By=/7lqsF&#39;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>mysql&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>global<span class="w"> </span><span class="nv">validate_password_policy</span><span class="o">=</span><span class="m">0</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>mysql&gt;<span class="w"> </span>alter<span class="w"> </span>user<span class="w"> </span>root@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>identified<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;admin123456&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<ul>
+<li>安装 Nacos</li>
+</ul>
+<p><div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>yum<span class="w"> </span>install<span class="w">  </span>-y<span class="w"> </span>java-1.8.0-openjdk
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>wget<span class="w"> </span>http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-7/x86_64/apache-maven-3.5.2-1.el7.noarch.rpm<span class="w"> </span>--no-check-certificate
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>apache-maven-3.5.2-1.el7.noarch.rpm
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>wget<span class="w"> </span>https://ghfast.top/https://github.com/alibaba/nacos/releases/download/2.1.1/nacos-server-2.1.1.tar.gz
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>mkdir<span class="w"> </span>-pv<span class="w">  </span>/data/apps
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>tar<span class="w"> </span>-xf<span class="w"> </span>nacos-server-2.1.1.tar.gz<span class="w">  </span>-C<span class="w"> </span>/data/apps/
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">cd</span><span class="w"> </span>/data/apps/nacos/
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>vim<span class="w"> </span>conf/application.properties
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>server.servlet.contextPath<span class="o">=</span>/nacos
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>server.error.include-message<span class="o">=</span>ON_PARAM
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>server.port<span class="o">=</span><span class="m">8848</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>spring.datasource.platform<span class="o">=</span>mysql
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>db.num<span class="o">=</span><span class="m">1</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>db.url.0<span class="o">=</span>jdbc:mysql://127.0.0.1:3306/nacos?characterEncoding<span class="o">=</span>utf8<span class="p">&amp;</span><span class="nv">connectTimeout</span><span class="o">=</span><span class="m">1000</span><span class="p">&amp;</span><span class="nv">socketTimeout</span><span class="o">=</span><span class="m">3000</span><span class="p">&amp;</span><span class="nv">autoReconnect</span><span class="o">=</span>true<span class="p">&amp;</span><span class="nv">useUnicode</span><span class="o">=</span>true<span class="p">&amp;</span><span class="nv">useSSL</span><span class="o">=</span>false<span class="p">&amp;</span><span class="nv">serverTimezone</span><span class="o">=</span>UTC
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>db.user.0<span class="o">=</span>root
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>db.password.0<span class="o">=</span>admin123456
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>db.pool.config.connectionTimeout<span class="o">=</span><span class="m">30000</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>db.pool.config.validationTimeout<span class="o">=</span><span class="m">10000</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>db.pool.config.maximumPoolSize<span class="o">=</span><span class="m">20</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>db.pool.config.minimumIdle<span class="o">=</span><span class="m">2</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>nacos.naming.empty-service.auto-clean<span class="o">=</span><span class="nb">true</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>nacos.naming.empty-service.clean.initial-delay-ms<span class="o">=</span><span class="m">50000</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>nacos.naming.empty-service.clean.period-time-ms<span class="o">=</span><span class="m">30000</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>management.metrics.export.elastic.enabled<span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>management.metrics.export.influx.enabled<span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>server.tomcat.accesslog.enabled<span class="o">=</span><span class="nb">true</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>server.tomcat.accesslog.pattern<span class="o">=</span>%h<span class="w"> </span>%l<span class="w"> </span>%u<span class="w"> </span>%t<span class="w"> </span><span class="s2">&quot;%r&quot;</span><span class="w"> </span>%s<span class="w"> </span>%b<span class="w"> </span>%D<span class="w"> </span>%<span class="o">{</span>User-Agent<span class="o">}</span>i<span class="w"> </span>%<span class="o">{</span>Request-Source<span class="o">}</span>i
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>server.tomcat.basedir<span class="o">=</span>file:.
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>nacos.security.ignore.urls<span class="o">=</span>/,/error,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-ui/public/**,/v1/auth/**,/v1/console/health/**,/actuator/**,/v1/console/server/**
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>nacos.core.auth.system.type<span class="o">=</span>nacos
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>nacos.core.auth.enabled<span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>nacos.core.auth.caching.enabled<span class="o">=</span><span class="nb">true</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>nacos.core.auth.enable.userAgentAuthWhite<span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>nacos.core.auth.server.identity.key<span class="o">=</span>serverIdentity
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>nacos.core.auth.server.identity.value<span class="o">=</span>security
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>nacos.core.auth.plugin.nacos.token.expire.seconds<span class="o">=</span><span class="m">18000</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>nacos.core.auth.plugin.nacos.token.secret.key<span class="o">=</span>SecretKey012345678901234567890123456789012345678901234567890123456789
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>nacos.istio.mcp.server.enabled<span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>mysql<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s1">&#39;admin123456&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;create database nacos default charset utf8mb4;&quot;</span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>mysql<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s1">&#39;admin123456&#39;</span><span class="w"> </span>nacos<span class="w"> </span>&lt;<span class="w"> </span>conf/nacos-mysql.sql<span class="w"> </span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w"> </span>mysql<span class="w"> </span>-uroot<span class="w"> </span>-p<span class="s1">&#39;admin123456&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;show tables from nacos;&quot;</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>mysql:<span class="w"> </span><span class="o">[</span>Warning<span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>a<span class="w"> </span>password<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>interface<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>insecure.
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>+----------------------+
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="p">|</span><span class="w"> </span>Tables_in_nacos<span class="w">      </span><span class="p">|</span>
+</span><span id="__span-1-47"><a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>+----------------------+
+</span><span id="__span-1-48"><a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="p">|</span><span class="w"> </span>config_info<span class="w">          </span><span class="p">|</span>
+</span><span id="__span-1-49"><a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="p">|</span><span class="w"> </span>config_info_aggr<span class="w">     </span><span class="p">|</span>
+</span><span id="__span-1-50"><a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="p">|</span><span class="w"> </span>config_info_beta<span class="w">     </span><span class="p">|</span>
+</span><span id="__span-1-51"><a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="p">|</span><span class="w"> </span>config_info_tag<span class="w">      </span><span class="p">|</span>
+</span><span id="__span-1-52"><a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="p">|</span><span class="w"> </span>config_tags_relation<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-1-53"><a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="p">|</span><span class="w"> </span>group_capacity<span class="w">       </span><span class="p">|</span>
+</span><span id="__span-1-54"><a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="p">|</span><span class="w"> </span>his_config_info<span class="w">      </span><span class="p">|</span>
+</span><span id="__span-1-55"><a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="p">|</span><span class="w"> </span>permissions<span class="w">          </span><span class="p">|</span>
+</span><span id="__span-1-56"><a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="p">|</span><span class="w"> </span>roles<span class="w">                </span><span class="p">|</span>
+</span><span id="__span-1-57"><a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="p">|</span><span class="w"> </span>tenant_capacity<span class="w">      </span><span class="p">|</span>
+</span><span id="__span-1-58"><a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="p">|</span><span class="w"> </span>tenant_info<span class="w">          </span><span class="p">|</span>
+</span><span id="__span-1-59"><a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="p">|</span><span class="w"> </span>users<span class="w">                </span><span class="p">|</span>
+</span><span id="__span-1-60"><a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>+----------------------+
+</span><span id="__span-1-61"><a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w"> </span>./bin/startup.sh<span class="w">  </span>-m<span class="w"> </span>standalone
+</span></code></pre></div>
+访问ui: <code>http://192.168.1.67:8848/nacos/</code>, 默认用户名密码为 nacos/nacos
+<img alt="img.png" src="../img.png" /></p>
+<h4 id="2-sentinel">2. Sentinel<a class="headerlink" href="#2-sentinel" title="Permanent link"></a></h4>
+<h4 id="3-skywalking">3. Skywalking<a class="headerlink" href="#3-skywalking" title="Permanent link"></a></h4>
+<h3 id="_3">微服务层<a class="headerlink" href="#_3" title="Permanent link"></a></h3>
 
 
 
