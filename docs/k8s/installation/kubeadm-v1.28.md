@@ -155,7 +155,8 @@ tee  /etc/docker/daemon.json << 'EOF'
     "exec-opts": ["native.cgroupdriver=systemd"],
     "registry-mirrors": [
          "https://o4uba187.mirror.aliyuncs.com",
-         "https://docker.1ms.run"
+         "https://docker.1ms.run",
+         "https://docker.1panel.live"
     ]
 }
 EOF

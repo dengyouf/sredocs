@@ -68,13 +68,13 @@ extra_css:
 nav:
   # - 主页: "index.md"
   - 基础服务手册:
-      - 负载均衡:
-        - Nginx: ""
+      - Jira: "base/jira.md"
   - PostgreSQL:
       - 快速入门:
           - 安装手册: "postgres/安装手册.md"
           - 常见PSQL语句: "postgres/常见PSQL语句.md"
-
+  - 微服务部署:
+      - RuoYi-Cloud: "micsvs/RuoYi-Cloud.md"
   - 监控系统:
       - Prometheus:
           - 快速入门: "prometheus/quick_start.md"
@@ -84,3 +84,5 @@ nav:
         - 部署Kubernetes集群(v1.28): "k8s/installation/kubeadm-v1.28.md"
     - Pods:
         - 健康检查: "k8s/pod/podinfo.md"
+
+
