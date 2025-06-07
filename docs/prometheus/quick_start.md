@@ -164,9 +164,108 @@ yum install -y https://dl.grafana.com/oss/release/grafana-11.6.1-1.x86_64.rpm
 systemctl  enable  grafana-server.service --now
 ```
 
-## Alert Manager
+## 夜莺监控
+
+安装 redis 和 mariadb
 
 ```shell
-
+yum install -y   redis mariadb-server
+systemctl  enable redis mariadb --now
 ```
+
+获取并解压n9e
+
+```shell
+curl -H'Referer: https://console.flashcat.cloud' -O https://download.flashcat.cloud/n9e-v7.7.0-linux-amd64.tar.gz
+mkdir /data/apps/n9eapp
+tar -xf n9e-v7.7.0-linux-amd64.tar.gz  -C /data/apps/n9eapp
+```
+
+初始化数据库
+
+```shell
+mysql -uroot  -e "grant all on *.* to 'n9e'@'%' identified by 'Passw0rd';"
+mysql -u ne9 -p'Passw0rd' < /data/apps/n9eapp/n9e.sql
+ mysql -u ne9 -p'Passw0rd' -e "show databases;"
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| n9e_v6             |
+| performance_schema |
++--------------------+
+```
+
+启动服务
+
+```shell
+cd /data/apps/n9eapp && vim etc/config.toml|
+[DB]
+DSN = "root:Passw0rd@tcp(192.168.1.101:3306)/n9e_v6?charset=utf8mb4&parseTime=True&loc=Local&allowNativePasswords=true"
+[Redis]
+Address = "192.168.1.101:6379"
+```
+```shell
+cat > /usr/lib/systemd/system/n9e.service <<EOF
+[Unit]
+Description=Nightinagle
+
+[Service]
+WorkingDirectory=/data/apps/n9eapp
+ExecStart=/data/apps/n9eapp/n9e
+
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl  start n9e
+[root@k8s-master01 n9eapp]# ss -tnlp|grep 17000
+LISTEN 0      32768              *:17000            *:*    users:(("n9e",pid=24538,fd=11))
+```
+
+访问 UI, 默认密码为 root/root.2020
+
+![img.png](../images/n9e.png)
+
+### 配置钉钉告警
+
+1. 添加 Prometheus数据源
+
+![img.png](../images/ne9-datasource.png)
+
+2. 创建用户,在用户联系方式添加钉钉机器人
+
+![img.png](../images/n9e-user.png)
+
+3. 创建团队，并将用户添加到团队
+
+![img_1.png](../images/n9e-tuandui.png)
+
+4. 创建业务组，并将团对添加到业务组
+
+![img.png](../images/n9e-busi.png)
+
+5. 添加告警规则
+- 定义规则名称
+
+![img.png](../images/n9e-rule01.png)
+- 配置规则
+
+![img_3.png](../images/n9e-rule02.png)
+
+- 生效配置
+![img.png](../images/n9e-rule04.png)
+
+- 通知配置
+
+![img_1.png](../images/n9e-rule05.png)
+
+- 查看告警
+
+![img.png](../images/n9e-message.png)
+
+
+
+
+
 

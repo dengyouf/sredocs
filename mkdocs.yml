@@ -59,7 +59,7 @@ plugins:
 
 
 extra:
-  homepage: https://www.baidu.com
+  homepage: https://dengyouf.github.io/sredocs/
   # version:
   #   provider: mike
 extra_css:
@@ -84,5 +84,10 @@ nav:
         - 部署Kubernetes集群(v1.28): "k8s/installation/kubeadm-v1.28.md"
     - Pods:
         - 健康检查: "k8s/pod/podinfo.md"
+
+  - DevOps:
+    - Jenkins:
+        - 安装: "jenkins/install.md"
+
 
 
