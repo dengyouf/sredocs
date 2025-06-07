@@ -96,7 +96,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://www.baidu.com" title="SRE运维在线手册" class="md-header__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
+    <a href="https://dengyouf.github.io/sredocs/" title="SRE运维在线手册" class="md-header__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
       
   <img src="../../pic/icon/logo.png" alt="logo">
 
@@ -268,6 +268,29 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../jenkins/install/" class="md-tabs__link">
+        DevOps
+      </a>
+    </li>
+  
+
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -297,7 +320,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://www.baidu.com" title="SRE运维在线手册" class="md-nav__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
+    <a href="https://dengyouf.github.io/sredocs/" title="SRE运维在线手册" class="md-nav__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
       
   <img src="../../pic/icon/logo.png" alt="logo">
 
@@ -731,9 +754,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alert-manager" class="md-nav__link">
-    Alert Manager
+  <a href="#_1" class="md-nav__link">
+    夜莺监控
   </a>
+  
+    <nav class="md-nav" aria-label="夜莺监控">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    配置钉钉告警
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -920,6 +956,97 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          Jenkins
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Jenkins
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jenkins/install/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1064,9 +1191,91 @@
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://dl.grafana.com/oss/release/grafana-11.6.1-1.x86_64.rpm
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>systemctl<span class="w">  </span><span class="nb">enable</span><span class="w">  </span>grafana-server.service<span class="w"> </span>--now
 </span></code></pre></div>
-<h2 id="alert-manager">Alert Manager<a class="headerlink" href="#alert-manager" title="Permanent link"></a></h2>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>
+<h2 id="_1">夜莺监控<a class="headerlink" href="#_1" title="Permanent link"></a></h2>
+<p>安装 redis 和 mariadb</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w">   </span>redis<span class="w"> </span>mariadb-server
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>systemctl<span class="w">  </span><span class="nb">enable</span><span class="w"> </span>redis<span class="w"> </span>mariadb<span class="w"> </span>--now
 </span></code></pre></div>
+<p>获取并解压n9e</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>curl<span class="w"> </span>-H<span class="s1">&#39;Referer: https://console.flashcat.cloud&#39;</span><span class="w"> </span>-O<span class="w"> </span>https://download.flashcat.cloud/n9e-v7.7.0-linux-amd64.tar.gz
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>mkdir<span class="w"> </span>/data/apps/n9eapp
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>tar<span class="w"> </span>-xf<span class="w"> </span>n9e-v7.7.0-linux-amd64.tar.gz<span class="w">  </span>-C<span class="w"> </span>/data/apps/n9eapp
+</span></code></pre></div>
+<p>初始化数据库</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>mysql<span class="w"> </span>-uroot<span class="w">  </span>-e<span class="w"> </span><span class="s2">&quot;grant all on *.* to &#39;n9e&#39;@&#39;%&#39; identified by &#39;Passw0rd&#39;;&quot;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>mysql<span class="w"> </span>-u<span class="w"> </span>ne9<span class="w"> </span>-p<span class="s1">&#39;Passw0rd&#39;</span><span class="w"> </span>&lt;<span class="w"> </span>/data/apps/n9eapp/n9e.sql
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>ne9<span class="w"> </span>-p<span class="s1">&#39;Passw0rd&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;show databases;&quot;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>+--------------------+
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">|</span><span class="w"> </span>Database<span class="w">           </span><span class="p">|</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>+--------------------+
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p">|</span><span class="w"> </span>information_schema<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="p">|</span><span class="w"> </span>mysql<span class="w">              </span><span class="p">|</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="p">|</span><span class="w"> </span>n9e_v6<span class="w">             </span><span class="p">|</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="p">|</span><span class="w"> </span>performance_schema<span class="w"> </span><span class="p">|</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>+--------------------+
+</span></code></pre></div>
+<p>启动服务</p>
+<p><div class="language-shell highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>/data/apps/n9eapp<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>vim<span class="w"> </span>etc/config.toml<span class="p">|</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="o">[</span>DB<span class="o">]</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nv">DSN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;root:Passw0rd@tcp(192.168.1.101:3306)/n9e_v6?charset=utf8mb4&amp;parseTime=True&amp;loc=Local&amp;allowNativePasswords=true&quot;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="o">[</span>Redis<span class="o">]</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nv">Address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;192.168.1.101:6379&quot;</span>
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/usr/lib/systemd/system/n9e.service<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s">[Unit]</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="s">Description=Nightinagle</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s">[Service]</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="s">WorkingDirectory=/data/apps/n9eapp</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="s">ExecStart=/data/apps/n9eapp/n9e</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="s">[Install]</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="s">WantedBy=multi-user.target</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="s">EOF</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>systemctl<span class="w">  </span>start<span class="w"> </span>n9e
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="o">[</span>root@k8s-master01<span class="w"> </span>n9eapp<span class="o">]</span><span class="c1"># ss -tnlp|grep 17000</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>LISTEN<span class="w"> </span><span class="m">0</span><span class="w">      </span><span class="m">32768</span><span class="w">              </span>*:17000<span class="w">            </span>*:*<span class="w">    </span>users:<span class="o">((</span><span class="s2">&quot;n9e&quot;</span>,pid<span class="o">=</span><span class="m">24538</span>,fd<span class="o">=</span><span class="m">11</span><span class="o">))</span>
+</span></code></pre></div></p>
+<p>访问 UI, 默认密码为 root/root.2020</p>
+<p><img alt="img.png" src="../../images/n9e.png" /></p>
+<h3 id="_2">配置钉钉告警<a class="headerlink" href="#_2" title="Permanent link"></a></h3>
+<ol>
+<li>添加 Prometheus数据源</li>
+</ol>
+<p><img alt="img.png" src="../../images/ne9-datasource.png" /></p>
+<ol>
+<li>创建用户,在用户联系方式添加钉钉机器人</li>
+</ol>
+<p><img alt="img.png" src="../../images/n9e-user.png" /></p>
+<ol>
+<li>创建团队，并将用户添加到团队</li>
+</ol>
+<p><img alt="img_1.png" src="../../images/n9e-tuandui.png" /></p>
+<ol>
+<li>创建业务组，并将团对添加到业务组</li>
+</ol>
+<p><img alt="img.png" src="../../images/n9e-busi.png" /></p>
+<ol>
+<li>添加告警规则</li>
+<li>定义规则名称</li>
+</ol>
+<p><img alt="img.png" src="../../images/n9e-rule01.png" />
+- 配置规则</p>
+<p><img alt="img_3.png" src="../../images/n9e-rule02.png" /></p>
+<ul>
+<li>
+<p>生效配置
+<img alt="img.png" src="../../images/n9e-rule04.png" /></p>
+</li>
+<li>
+<p>通知配置</p>
+</li>
+</ul>
+<p><img alt="img_1.png" src="../../images/n9e-rule05.png" /></p>
+<ul>
+<li>查看告警</li>
+</ul>
+<p><img alt="img.png" src="../../images/n9e-message.png" /></p>
 
 
 

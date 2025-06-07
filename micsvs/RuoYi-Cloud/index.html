@@ -96,7 +96,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://www.baidu.com" title="SRE运维在线手册" class="md-header__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
+    <a href="https://dengyouf.github.io/sredocs/" title="SRE运维在线手册" class="md-header__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
       
   <img src="../../pic/icon/logo.png" alt="logo">
 
@@ -268,6 +268,29 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../jenkins/install/" class="md-tabs__link">
+        DevOps
+      </a>
+    </li>
+  
+
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -297,7 +320,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://www.baidu.com" title="SRE运维在线手册" class="md-nav__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
+    <a href="https://dengyouf.github.io/sredocs/" title="SRE运维在线手册" class="md-nav__button md-logo" aria-label="SRE运维在线手册" data-md-component="logo">
       
   <img src="../../pic/icon/logo.png" alt="logo">
 
@@ -858,6 +881,97 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          Jenkins
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Jenkins
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jenkins/install/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -962,6 +1076,29 @@
 访问ui: <code>http://192.168.1.67:8848/nacos/</code>, 默认用户名密码为 nacos/nacos
 <img alt="img.png" src="../img.png" /></p>
 <h4 id="2-sentinel">2. Sentinel<a class="headerlink" href="#2-sentinel" title="Permanent link"></a></h4>
+<p><div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>wget<span class="w"> </span>https://ghfast.top/https://github.com/alibaba/Sentinel/releases/download/1.8.5/sentinel-dashboard-1.8.5.jar
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-pv<span class="w"> </span>/data/apps/sentinel
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>mv<span class="w"> </span>sentinel-dashboard-1.8.5.jar<span class="w">  </span>/data/apps/sentinel
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>chown<span class="w"> </span>dengyouf.dengyouf<span class="w">  </span>-R<span class="w"> </span>/data/apps/sentinel
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>supervisor
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>systemctl<span class="w">  </span><span class="nb">enable</span><span class="w"> </span>supervisord<span class="w"> </span>--now
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/supervisord.d/sentinel.ini<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s">[program:sentinel]</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s">directory=/data/apps/sentinel</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s">command=/usr/bin/java  -Dserver.port=8718 -Dcsp.sentineldashboard.server=localhost:8718 -Dproject.name=sentinel-dashboard  -Dcsp.sentinel.api.port=8719 -jar sentinel-dashboard-1.8.5.jar </span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s">user=dengyouf</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s">autostart=true</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s">autorestart=unexpected</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s">startsecs=15</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s">exitcodes=2</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s">startretries=3</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="s">environment=</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s">EOF</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>supervisorctl<span class="w">  </span>status
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>sentinel<span class="w">                         </span>RUNNING<span class="w">   </span>pid<span class="w"> </span><span class="m">12710</span>,<span class="w"> </span>uptime<span class="w"> </span><span class="m">0</span>:00:47
+</span></code></pre></div>
+访问ui: <code>http://192.168.1.67:8718</code>, 默认用户名密码为 sentinel/sentinel
+<img alt="img_1.png" src="../img_1.png" /></p>
 <h4 id="3-skywalking">3. Skywalking<a class="headerlink" href="#3-skywalking" title="Permanent link"></a></h4>
 <h3 id="_3">微服务层<a class="headerlink" href="#_3" title="Permanent link"></a></h3>
 
